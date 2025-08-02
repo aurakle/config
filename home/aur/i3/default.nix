@@ -63,6 +63,7 @@ in {
       (mkOnce "${networkmanagerapplet.out}/bin/nm-applet")
       (mkOnce "${sirikali.out}/bin/sirikali")
       (mkOnce "${vesktop.out}/bin/vesktop")
+      (mkOnce "${signal-desktop.out}/bin/signal-desktop")
       (mkOnce "${heroic.out}/bin/heroic")
       (mkOnce "${steam.out}/bin/steam")
       (mkOnce "${birdtray.out}/bin/birdtray")

@@ -99,6 +99,7 @@ in rec {
     unstable.neovide
     unstable.olympus
     iamb
+    signal-desktop
     octave
     libqalculate
     firefox
