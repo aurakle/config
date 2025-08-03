@@ -39,7 +39,7 @@ in {
       agenix.homeManagerModules.default
       nixvim.homeManagerModules.default
       spicetify-nix.homeManagerModules.default
-      catppuccin.homeModules.default
+      catppuccin.homeModules.catppuccin
     ];
   };
 }
