@@ -14,7 +14,6 @@
 
   services = {
     blueman.enable = true;
-    flatpak.enable = true;
     dbus.enable = true;
     pcscd.enable = true;
     hardware.openrgb.enable = true;
