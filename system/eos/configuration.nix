@@ -18,6 +18,7 @@
   hardware.graphics.enable32Bit = true;
 
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableKvm = true;
   virtualisation.docker = {
     enable = true;
 
