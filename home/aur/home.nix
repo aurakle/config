@@ -111,6 +111,7 @@ in rec {
     krita
     ffmpeg
     pandoc
+    fastfetch
     calibre
     zathura
     r2modman
