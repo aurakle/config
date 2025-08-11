@@ -896,8 +896,8 @@ in {
     '';
   };
 
-  # Neovide
-  extraConfigLua = ''
+  extraConfigLuaPost = ''
+    -- Neovide
     if vim.g.neovide then
       vim.g.neovide_cursor_vfx_mode = "railgun"
 
@@ -921,5 +921,8 @@ in {
     end
 
     require("telescope").load_extension("zoxide")
+
+    -- gdscript :c
+    require("lspconfig").gdscript.setup({ capabilities = vim.lsp.protocol.make_client_capabilities() })
   '';
 }
