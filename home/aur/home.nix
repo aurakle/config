@@ -39,14 +39,8 @@ in rec {
     sswitcher
   ] ++ (with pkgs.aurakle; [
     i3lock-blurred
-    git-nixed
-    vault
-    bar
-    clickrtraining
     EternalModManager
-    #TODO: broken
-    # element-desktop
-    #ImageSorter
+    bar
   ]) ++ (with pkgs; [
     (writeShellScriptBin "recon-gdrive" ''
       ${rclone.out}/bin/rclone config reconnect AuraGDrive:

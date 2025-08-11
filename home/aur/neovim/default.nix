@@ -287,6 +287,7 @@ in {
     neocord.enable = true;
     notify.enable = true;
     friendly-snippets.enable = true;
+    godot.enable = true;
     dap-ui.enable = true;
 
     dap = {
