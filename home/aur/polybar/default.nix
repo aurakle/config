@@ -16,9 +16,14 @@ in {
   script = "";
   config = pkgs.writeText "config.ini" ((builtins.readFile ./config.ini) + ''
     [bar/primary]
-    modules-left = whoami xkeyboard cpu memory xworkspaces
+    modules-left = whoami xkeyboard cpu gpu memory xworkspaces
     modules-center = systray
     modules-right = mic-volume pulseaudio wlan battery date
+
+    [module/gpu]
+    type = custom/script
+    interval = 0.5
+    exec = ${pkgs.fastfetch.out}/bin/fastfetch --gpu-force-vulkan --allow-slow-operations --structure GPU --logo none | awk '{gsub(/\(/,""); gsub(/\)/,""); if ($10 == "MiB") printf "%s %0.1f/%0.0fGiB\n", $14, $9/1024, $12; else printf "%s %0.1f/%0.0fGiB\n", $14, $9, $12; exit}'
 
     [module/mic-volume]
     type = custom/script
