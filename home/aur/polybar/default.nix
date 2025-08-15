@@ -16,9 +16,9 @@ in {
   script = "";
   config = pkgs.writeText "config.ini" ((builtins.readFile ./config.ini) + ''
     [bar/primary]
-    modules-left = cpu gpu memory xworkspaces
+    modules-left = whoami cpu gpu memory xworkspaces
     modules-center = systray
-    modules-right = xkeyboard mic-volume pulseaudio wlan battery date whoami
+    modules-right = xkeyboard mic-volume pulseaudio wlan battery date
 
     [module/gpu]
     type = custom/script
