@@ -23,7 +23,7 @@ in {
     [module/gpu]
     type = custom/script
     interval = 0.5
-    exec = ${pkgs.fastfetch.out}/bin/fastfetch --allow-slow-operations --structure GPU --logo none | awk '{gsub(/\(/,""); gsub(/\)/,""); if ($10 == "MiB") printf "%s %0.1f/%0.0fGiB\n", $14, $9/1024, $12; else printf "%s %0.1f/%0.0fGiB\n", $14, $9, $12; exit}'
+    exec = ${pkgs.fastfetch.out}/bin/fastfetch --gpu-driver-specific --structure GPU --logo none | awk '{gsub(/[^\(]*\(/,""); gsub(/\).*/,""); gsub(/,/,""); printf "%s\n", $6, $1, $2, $3, $4, $5; exit}'
 
     [module/mic-volume]
     type = custom/script
