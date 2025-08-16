@@ -479,7 +479,7 @@ in rec {
   systemd.user.services = {
     clean = {
       Unit = {
-        Description = "clean Nix store";
+        Description = "clean old home-manager generations";
       };
 
       Install = {
@@ -487,7 +487,7 @@ in rec {
       };
 
       Service = {
-        ExecStart = "${pkgs.aurakle.easy-nixos.out}/bin/home-clean";
+        ExecStart = "${lib.getExe pkgs.aurakle.trim-generations} 3 0 home-manager";
       };
     };
 

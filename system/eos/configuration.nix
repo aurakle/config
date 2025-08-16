@@ -72,6 +72,20 @@
     style = "gtk2";
   };
 
+  # Scripts that run every boot, and every rebuild
+  # Be careful with these
+  system.activationScripts = {
+    # Garbage Collector, deletes everything other than the last ${minGens} generations
+    garbageCollector = let
+      minGens = 3;
+    in {
+      text = ''
+        ${lib.getExe pkgs.aurakle.trim-generations} ${minGens} 0 system
+      '';
+      deps = [];
+    };
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
