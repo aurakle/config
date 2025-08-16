@@ -75,12 +75,10 @@
   # Scripts that run every boot, and every rebuild
   # Be careful with these
   system.activationScripts = {
-    # Garbage Collector, deletes everything other than the last ${minGens} generations
-    garbageCollector = let
-      minGens = 3;
-    in {
+    # Garbage Collector, deletes everything other than the last 3 generations
+    garbageCollector = {
       text = ''
-        ${lib.getExe pkgs.aurakle.trim-generations} ${minGens} 0 system
+        ${lib.getExe pkgs.aurakle.trim-generations} 3 0 system
       '';
       deps = [];
     };
