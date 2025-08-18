@@ -100,6 +100,7 @@ in rec {
     handbrake
     vlc
     tenacity
+    inkscape
     gitnr
     aseprite
     krita
