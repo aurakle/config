@@ -270,7 +270,7 @@ in rec {
     plugins = with pkgs; [
       (rofi-power-menu.overrideAttrs (old: {
         src = pkgs.fetchFromGitHub {
-          owner = "StellarWitch7";
+          owner = "aurakle";
           repo = "rofi-power-menu";
           rev = "59628e017a8f5b6261b28930e7f267e512008fd3";
           hash = "sha256-ptaU0kspr0mfYDS4UZ1pFvCTod3SihS1z8Qcqr4a8Tw=";
@@ -489,6 +489,7 @@ in rec {
 
       Service = {
         ExecStart = "${lib.getExe pkgs.aurakle.trim-generations} 3 0 home-manager";
+        StandardInputText = "y\n";
       };
     };
 

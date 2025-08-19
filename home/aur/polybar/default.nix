@@ -2,7 +2,7 @@
 
 let
   src = pkgs.fetchFromGitHub {
-    owner = "StellarWitch7";
+    owner = "aurakle";
     repo = "polybar-mic-volume";
     rev = "5acd3b2f2db09eaa14caa91cda856bbaddaca450";
     hash = "sha256-QexNYNwsmogG1oIJFbeGn36bKibBREPSDWgBoelQ4w0=";

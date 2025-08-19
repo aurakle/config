@@ -13,7 +13,7 @@ in {
   vimAlias = true;
   enableMan = true;
 
-  nixpkgs.pkgs = pkgs;
+  nixpkgs.useGlobalPackages = true;
 
   opts = {
     number = true;
@@ -27,13 +27,15 @@ in {
     shiftwidth = 4;
     tabstop = 4;
     scrolloff = 8;
+    colorcolumn = "120"; # lol why does this need to be a string
     clipboard = "unnamedplus";
 
     listchars = {
       multispace = "⋅";
-      trail = "•";
-      extends = "❯";
-      precedes = "❮";
+      trail = "␣";
+      tab = "» ";
+      extends = "›";
+      precedes = "‹";
     };
   };
 
@@ -234,17 +236,17 @@ in {
       name = "xplr.vim";
 
       src = fetchFromGitHub {
-        owner = "StellarWitch7";
+        owner = "aurakle";
         repo = "xplr.vim";
         rev = "f9bc3800a213d5cb7eaf979e71a96b1f43a81a66";
         hash = "sha256-eLF//fM3+Qxj/fJ1ydrMCrXAvX0kX8Yl7Iz181Fc2Xo=";
       };
-        })
+    })
     (vimUtils.buildVimPlugin {
       name = "telescope-zoxide.nvim";
 
       src = fetchFromGitHub {
-        owner = "StellarWitch7";
+        owner = "aurakle";
         repo = "telescope-zoxide.nvim";
         rev = "fbc14fbac6d21a8d133526158f69190d62a5d8bf";
         hash = "sha256-q6ojZiCnDjZzxCmhG08uGSoK7BRHJXdTdVgePj9tgKI=";
@@ -265,7 +267,6 @@ in {
     lsp-lines.enable = true;
     lsp-signature.enable = true;
     specs.enable = true;
-    barbar.enable = true;
     web-devicons.enable = true;
     hmts.enable = true; #TODO: possibly causes issues?
     lazygit.enable = true;
@@ -289,6 +290,41 @@ in {
     friendly-snippets.enable = true;
     godot.enable = true;
     dap-ui.enable = true;
+
+    barbar = {
+      enable = true;
+
+      settings = {
+        sidebar_filetypes = {
+          NvimTree = true;
+        };
+      };
+    };
+
+    nvim-tree = {
+      enable = true;
+
+      openOnSetupFile = true;
+      hijackCursor = true;
+      selectPrompts = true;
+
+      updateFocusedFile = {
+        enable = true;
+        updateRoot = true;
+      };
+
+      view = {
+        width = 50;
+      };
+
+      renderer = {
+        addTrailing = true;
+        groupEmpty = true;
+        symlinkDestination = true;
+        indentWidth = 2;
+        highlightOpenedFiles = "all";
+      };
+    };
 
     dap = {
       enable = true;

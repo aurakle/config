@@ -12,11 +12,12 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
 
+    nixvim.url = "github:nix-community/nixvim/nixos-${version}";
+
     nur = dep "github:nix-community/nur";
     aurakle = dep "github:aurakle/nurpkgs";
     agenix = dep "github:ryantm/agenix";
     home-manager = dep "github:nix-community/home-manager/release-${version}";
-    nixvim = dep "github:nix-community/nixvim/nixos-${version}";
     spicetify-nix = dep "github:Gerg-L/spicetify-nix";
     catppuccin = dep "github:catppuccin/nix";
   };

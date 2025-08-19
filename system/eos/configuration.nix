@@ -78,7 +78,7 @@
     # Garbage Collector, deletes everything other than the last 3 generations
     garbageCollector = {
       text = ''
-        ${lib.getExe pkgs.aurakle.trim-generations} 3 0 system
+        yes | ${lib.getExe pkgs.aurakle.trim-generations} 3 0 system
       '';
       deps = [];
     };
