@@ -94,6 +94,7 @@ in rec {
     unstable.olympus
     iamb
     signal-desktop
+    magic-wormhole
     octave
     libqalculate
     firefox
