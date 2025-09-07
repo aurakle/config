@@ -1,8 +1,8 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    inputs.agenix.nixosModules.default
     ./configuration.nix
     ./cachix.nix
     ./packages.nix
