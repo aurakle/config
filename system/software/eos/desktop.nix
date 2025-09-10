@@ -22,8 +22,6 @@
     enable = true;
     exportConfiguration = true;
 
-    videoDrivers = [ "amdgpu" ];
-
     wacom.enable = true;
 
     xkb = {
