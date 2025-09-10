@@ -83,7 +83,7 @@ in rec {
       find ./ -type f -exec sed -i -e "$1" {} \;
     '')
     (writeShellScriptBin "md2pdf" ''
-      pandoc --pdf-engine=xelatex --from=markdown+hard_line_breaks --to pdf '$1.md' -o '$1.pdf'
+      pandoc --pdf-engine=xelatex --from=markdown+hard_line_breaks --to pdf "$1.md" -o "$1.pdf"
     ''
     )
     (writeShellScriptBin "mcdev-open-all" ''
