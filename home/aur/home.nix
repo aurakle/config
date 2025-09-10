@@ -82,6 +82,10 @@ in rec {
     (writeShellScriptBin "rec-sed" ''
       find ./ -type f -exec sed -i -e "$1" {} \;
     '')
+    (writeShellScriptBin "md2pdf" ''
+      pandoc --pdf-engine=xelatex --from=markdown+hard_line_breaks --to pdf '$1.md' -o '$1.pdf'
+    ''
+    )
     (writeShellScriptBin "mcdev-open-all" ''
       nvim $(find src/main/java -type f) $(find src/client/java -type f)
     '')
@@ -107,6 +111,7 @@ in rec {
     krita
     ffmpeg
     pandoc
+    miktex
     fastfetch
     calibre
     zathura
