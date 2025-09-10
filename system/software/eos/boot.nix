@@ -25,11 +25,6 @@
     # It will just not appear on screen unless a key is pressed
     loader.timeout = 0;
 
-    # Load wifi adapter driver
-    extraModulePackages = with config.boot.kernelPackages; [
-      #rtl8812au
-    ];
-
     kernelModules = [ "i2c-dev" "i2c-piix4" ];
     kernelParams = [
       "preempt=full"

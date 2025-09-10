@@ -30,7 +30,6 @@
   };
 
   networking = {
-    hostName = "eos"; # Define your hostname.
     extraHosts = "";
     networkmanager.enable = true;
     usePredictableInterfaceNames = false;
