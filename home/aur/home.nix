@@ -109,6 +109,7 @@ in rec {
     gitnr
     aseprite
     krita
+    lmms
     ffmpeg
     pandoc
     miktex
