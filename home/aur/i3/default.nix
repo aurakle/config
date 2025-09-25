@@ -68,6 +68,7 @@ in {
       (mkOnce "${steam.out}/bin/steam")
       (mkOnce "${birdtray.out}/bin/birdtray")
       (mkOnce "${keepassxc.out}/bin/keepassxc")
+      (mkOnce "${soulseekqt.out}/bin/SoulseekQt")
       (mkOnce "${qbittorrent.out}/bin/qbittorrent")
       (mkOnce "${blueman.out}/bin/blueman-applet")
       (mkOnce "${warpd.out}/bin/warpd --config ${./warpd.conf}")
