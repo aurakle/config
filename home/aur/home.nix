@@ -102,6 +102,8 @@ in rec {
     octave
     libqalculate
     firefox
+    soulseekqt
+    speedtest-cli
     handbrake
     vlc
     tenacity
