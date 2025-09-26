@@ -109,6 +109,7 @@ in rec {
     handbrake
     vlc
     tenacity
+    puddletag
     inkscape
     gitnr
     aseprite
