@@ -100,6 +100,8 @@ in rec {
     signal-desktop
     magic-wormhole
     octave
+    komorebi
+    xwinwrap
     libqalculate
     firefox
     soulseekqt
