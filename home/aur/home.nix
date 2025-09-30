@@ -248,6 +248,8 @@ in rec {
       alias xcd="cd \$(xplr)"
       alias i2pbit="qbittorrent --configuration=I2P"
 
+      alias bitch=sudo
+
       ${pkgs.meow.out}/bin/meow
     '';
   };
