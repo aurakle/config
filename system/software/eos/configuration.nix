@@ -36,7 +36,7 @@
 
     extraHosts = "";
     hosts = {
-      "::1" = lib.mkForce [];
+      "::1" = lib.mkForce [ "localhostbutipv6" ];
     };
   };
 
