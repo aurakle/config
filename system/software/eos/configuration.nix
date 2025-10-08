@@ -30,10 +30,14 @@
   };
 
   networking = {
-    extraHosts = "";
     networkmanager.enable = true;
     usePredictableInterfaceNames = false;
     timeServers = options.networking.timeServers.default ++ [ ];
+
+    extraHosts = "";
+    hosts = {
+      "::1" = lib.mkForce [];
+    };
   };
 
   # Set your time zone.
