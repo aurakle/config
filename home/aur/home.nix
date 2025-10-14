@@ -104,6 +104,7 @@ in rec {
     xwinwrap
     libqalculate
     firefox
+    russ
     soulseekqt
     speedtest-cli
     handbrake

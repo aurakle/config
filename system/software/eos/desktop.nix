@@ -26,6 +26,8 @@
 
     xkb = {
       layout = "us,ca";
+
+      options = "compose:rctrl";
     };
 
     desktopManager = {
@@ -44,6 +46,4 @@
       xterm
     ];
   };
-
-
 }
