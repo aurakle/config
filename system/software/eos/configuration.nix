@@ -17,18 +17,6 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableKvm = true;
-  virtualisation.virtualbox.host.addNetworkInterface = false;
-  virtualisation.docker = {
-    enable = true;
-
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
-
   networking = {
     networkmanager.enable = true;
     usePredictableInterfaceNames = false;

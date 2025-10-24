@@ -4,6 +4,7 @@
   imports = [
     inputs.agenix.nixosModules.default
     ./configuration.nix
+    ./virtualization.nix
     ./cachix.nix
     ./packages.nix
     ./services.nix
