@@ -290,6 +290,7 @@ in {
     friendly-snippets.enable = true;
     godot.enable = true;
     dap-ui.enable = true;
+    typst-preview.enable = true;
 
     barbar = {
       enable = true;
@@ -384,6 +385,14 @@ in {
               "sema-escaping-with"
             ];
           };
+        };
+
+        tinymist = {
+          enable = true;
+        };
+
+        metals = {
+          enable = true;
         };
 
         rust_analyzer = {
