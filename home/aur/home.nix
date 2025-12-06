@@ -35,7 +35,14 @@ in rec {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = let
+    # vst plugins for music stuff
+    vst = with pkgs; [
+      lsp-plugins
+      surge-XT
+      vital
+    ];
+  in [
     sswitcher
   ] ++ (with pkgs.aurakle; [
     i3lock-blurred
@@ -111,11 +118,17 @@ in rec {
     vlc
     tenacity
     puddletag
+    imhex
     inkscape
     gitnr
     aseprite
     krita
     lmms
+    musescore
+    carla
+    openutau
+    yabridge
+    yabridgectl
     ffmpeg
     pandoc
     miktex
@@ -192,7 +205,7 @@ in rec {
     obsidian
     #TODO: insecure
     # ventoy-full
-  ]) ++ programs.rofi.plugins;
+  ]) ++ programs.rofi.plugins ++ vst;
 
   xsession = {
     enable = true;
@@ -694,7 +707,14 @@ in rec {
   #
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
+  home.sessionVariables = let
+    makeAudioPluginPath = format:
+      (lib.makeSearchPath format [
+        "$HOME/.nix-profile/lib"
+        "/run/current-system/sw/lib"
+        "/etc/profiles/per-user/$USER/lib"
+      ]) + ":$HOME/.${format}";
+  in {
     GAMES = "$HOME/Games";
     APPS = "$HOME/Apps";
 
@@ -710,6 +730,13 @@ in rec {
 
     _ZO_RESOLVE_SYMLINKS = 1;
     _ZO_ECHO = 1;
+
+    DSSI_PATH = makeAudioPluginPath "dssi";
+    LADSPA_PATH = makeAudioPluginPath "ladspa";
+    LV2_PATH = makeAudioPluginPath "lv2";
+    LXVST_PATH = makeAudioPluginPath "lxvst";
+    VST_PATH = makeAudioPluginPath "vst";
+    VST3_PATH = makeAudioPluginPath "vst3";
   };
 
   # This value determines the Home Manager release that your configuration is
