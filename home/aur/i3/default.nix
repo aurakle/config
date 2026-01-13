@@ -8,6 +8,7 @@
 , editor
 , sswitcher
 , pbar-start
+, clickr-click
 , screenshot-full
 , screenshot-gui }:
 
@@ -38,7 +39,7 @@ in {
     inherit terminal;
 
     startup = let
-      use-animated-background = true; #TODO: move this out?
+      use-animated-background = false; #TODO: move this out?
       mkCmd = command: always: {
         inherit command always;
         notification = false;
@@ -127,9 +128,7 @@ in {
       "${mod}+b" = "exec --no-startup-id ${bluetooth}";
 
       # Evelyn's clicker <3
-      "${mod}+c" = "exec --no-startup-id ${(pkgs.writeShellScriptBin "clickrtraining-click" ''
-        ${pkgs.aurakle.clickrtraining.out}/bin/clickrtraining click --addr clickertrain.ing --id $(cat ${config.age.secrets.clickr-evy.path})
-      '').out}/bin/clickrtraining-click";
+      "${mod}+c" = "exec --no-startup-id ${clickr-click.out}/bin/clickr-click evy.clickr";
 
       # keyboard layout
       "${mod}+g" = "exec --no-startup-id ${pkgs.xorg.setxkbmap.out}/bin/setxkbmap us";

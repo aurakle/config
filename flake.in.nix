@@ -18,7 +18,6 @@
     aurakle = dep "github:aurakle/nurpkgs";
     agenix = dep "github:ryantm/agenix";
     home-manager = dep "github:nix-community/home-manager/release-${version}";
-    spicetify-nix = dep "github:Gerg-L/spicetify-nix";
     catppuccin = dep "github:catppuccin/nix";
   };
 

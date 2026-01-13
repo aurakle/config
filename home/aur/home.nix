@@ -15,6 +15,12 @@ let
     ${pkgs.polybarFull.out}/bin/polybar-msg cmd quit
     exec ${pkgs.polybarFull.out}/bin/polybar
   '';
+  clickr-listen = pkgs.writeShellScriptBin "clickr-listen" ''
+    ${pkgs.aurakle.clickrtraining.out}/bin/clickrtraining listen --addr clickertrain.ing --id $(cat "$1")
+  '';
+  clickr-click = pkgs.writeShellScriptBin "clickr-click" ''
+    ${pkgs.aurakle.clickrtraining.out}/bin/clickrtraining click --addr clickertrain.ing --id $(cat "$1")
+  '';
   name = "aur";
   dir = "/home/${name}";
 in rec {
@@ -91,8 +97,7 @@ in rec {
     '')
     (writeShellScriptBin "md2pdf" ''
       pandoc --pdf-engine=xelatex --from=markdown+hard_line_breaks --to pdf "$1.md" -o "$1.pdf"
-    ''
-    )
+    '')
     (writeShellScriptBin "mcdev-open-all" ''
       nvim $(find src/main/java -type f) $(find src/client/java -type f)
     '')
@@ -115,6 +120,7 @@ in rec {
     soulseekqt
     speedtest-cli
     handbrake
+    scrcpy
     vlc
     tenacity
     puddletag
@@ -212,18 +218,7 @@ in rec {
     numlock.enable = true;
 
     windowManager.i3 = import ./i3 {
-      inherit lib config pkgs dir lock terminal browser editor sswitcher pbar-start screenshot-full screenshot-gui;
-    };
-  };
-
-  age = {
-    identityPaths = [ "${dir}/.ssh/key" ];
-    secretsDir = "${dir}/.local/share/agenix/agenix";
-    secretsMountPoint = "${dir}/.local/share/agenix/agenix.d";
-
-    secrets = {
-      clickr-mine.file = ./secrets/clickr-mine.age;
-      clickr-evy.file = ./secrets/clickr-evy.age;
+      inherit lib config pkgs dir lock terminal browser editor sswitcher pbar-start clickr-click screenshot-full screenshot-gui;
     };
   };
 
@@ -459,18 +454,6 @@ in rec {
     '';
   };
 
-  programs.spicetify = let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-  in {
-    enable = true;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
-
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-    ];
-  };
-
   programs.nixvim = import ./neovim {
     inherit config lib pkgs;
   };
@@ -533,9 +516,7 @@ in rec {
       };
 
       Service = {
-        ExecStart = "${(pkgs.writeShellScriptBin "clickrtraining-service" ''
-          ${pkgs.aurakle.clickrtraining.out}/bin/clickrtraining listen --addr clickertrain.ing --id $(cat ${config.age.secrets.clickr-mine.path})
-        '').out}/bin/clickrtraining-service";
+        ExecStart = "${clickr-listen.out}/bin/clickr-listen self.clickr";
       };
     };
   };

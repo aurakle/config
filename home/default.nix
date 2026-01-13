@@ -3,9 +3,7 @@ inputs@{ nixpkgs
 , nur
 , aurakle
 , home-manager
-, agenix
 , nixvim
-, spicetify-nix
 , catppuccin
 , ... }:
 
@@ -36,9 +34,7 @@ in {
     extraSpecialArgs = { inherit inputs; };
     modules = [
       ./aur
-      agenix.homeManagerModules.default
       nixvim.homeManagerModules.default
-      spicetify-nix.homeManagerModules.default
       catppuccin.homeModules.catppuccin
     ];
   };

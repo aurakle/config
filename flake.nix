@@ -28,10 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nur";
     };
-    spicetify-nix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:Gerg-L/spicetify-nix";
-    };
   };
   outputs = inputs: inputs.flakegen ./flake.in.nix inputs;
 }
