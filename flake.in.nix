@@ -1,6 +1,6 @@
 {
   inputs = let
-    version = "25.05";
+    version = "25.11";
     dep = url: {
       inherit url;
       inputs.nixpkgs.follows = "nixpkgs";
