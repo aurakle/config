@@ -1,9 +1,9 @@
 { inputs, config, lib, pkgs, ... }:
 
 let
-  editor = "${pkgs.neovim.out}/bin/nvim";
-  browser = "${pkgs.firefox.out}/bin/firefox";
-  terminal = "${pkgs.kitty.out}/bin/kitty";
+  editor = "nvim";
+  browser = "firefox";
+  terminal = "kitty";
   lock = "${pkgs.aurakle.i3lock-blurred.out}/bin/i3lock-blurred";
   screenshotter = "${pkgs.flameshot.out}/bin/flameshot";
   screenshot-gui = "${screenshotter} gui";
@@ -112,12 +112,12 @@ in rec {
     signal-desktop
     magic-wormhole
     octave
-    komorebi
     xwinwrap
     libqalculate
     firefox
     russ
-    soulseekqt
+    #TODO: removed, unmaintained
+    # soulseekqt
     speedtest-cli
     handbrake
     scrcpy
@@ -158,7 +158,7 @@ in rec {
     thunderbird
     birdtray # for thunderbird to support system tray
     git
-    gitAndTools.gh
+    gh
     hunspellDicts.en_GB-ise
     hunspellDicts.fr-any
     hunspellDicts.tok
@@ -201,7 +201,7 @@ in rec {
     keepassxc
     hyfetch
     bruno
-    xdragon
+    dragon-drop
     dua
     fzf
     trash-cli
