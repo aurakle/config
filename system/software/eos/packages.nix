@@ -82,14 +82,13 @@
     xplr
     bottom
     glances
-    nano
     wget
     usbutils
     gnupg
     networkmanager
     networkmanager-openvpn
     gparted
-    xwayland-satellite
+    # xwayland-satellite
   ];
 
   fonts.packages = with pkgs; [
@@ -102,8 +101,5 @@
     liberation_ttf
     fira-code
     fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

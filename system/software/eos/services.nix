@@ -76,10 +76,10 @@
     #   defaultWindowManager = "i3";
     # };
 
-    monado = {
-      enable = true;
-      defaultRuntime = true; # Register as default OpenXR runtime
-    };
+    # monado = {
+    #   enable = true;
+    #   defaultRuntime = true; # Register as default OpenXR runtime
+    # };
 
     i2pd = {
       enable = true;

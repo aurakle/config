@@ -5,6 +5,7 @@
 { config, lib, options, pkgs, ... }:
 
 {
+  nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   hardware.steam-hardware.enable = true; # VR

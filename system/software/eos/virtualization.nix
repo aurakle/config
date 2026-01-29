@@ -2,13 +2,13 @@
 
 {
   virtualisation = {
-    virtualbox = {
-      host = {
-        enable = true;
-        enableKvm = true;
-        addNetworkInterface = false;
-      };
-    };
+    # virtualbox = {
+    #   host = {
+    #     enable = true;
+    #     enableKvm = true;
+    #     addNetworkInterface = false;
+    #   };
+    # };
 
     podman = {
       enable = true;

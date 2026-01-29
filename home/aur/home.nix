@@ -106,12 +106,11 @@ in rec {
         wrapProgram $out/bin/vesktop --add-flags \"--disable-features=WebRtcAllowInputVolumeAdjustment\"
       '';
     }))
-    unstable.neovide
+    # unstable.neovide
     unstable.olympus
-    iamb
     signal-desktop
     magic-wormhole
-    octave
+    # octave
     xwinwrap
     libqalculate
     firefox
@@ -120,9 +119,8 @@ in rec {
     # soulseekqt
     speedtest-cli
     handbrake
-    scrcpy
+    # scrcpy
     vlc
-    tenacity
     puddletag
     imhex
     inkscape
@@ -136,16 +134,15 @@ in rec {
     yabridge
     yabridgectl
     ffmpeg
-    pandoc
+    # pandoc
     miktex
     fastfetch
-    calibre
-    zathura
+    # calibre
+    # zathura
     r2modman
     cemu
     kdePackages.kdenlive
     simplescreenrecorder
-    freetube
     cava
     heroic
     cookiecutter
@@ -206,11 +203,8 @@ in rec {
     fzf
     trash-cli
     pistol
-    ghostie
     ouch
     obsidian
-    #TODO: insecure
-    # ventoy-full
   ]) ++ programs.rofi.plugins ++ vst;
 
   xsession = {
