@@ -73,6 +73,8 @@
     # certbot-full
     pciutils
     cachix
+    unixtools.ifconfig
+    nix-du
     git
     lazygit
     git-extras

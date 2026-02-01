@@ -54,10 +54,8 @@ in {
         then mkAlways "${video-bg.out}/bin/i3-bg"
         else mkAlways "${feh.out}/bin/feh --no-fehbg --bg-scale ${./bg.png}")
       (mkAlways "systemctl --user import-environment PATH")
-      (mkAlways "${kitti3.out}/bin/kitti3 -n caterwaul -p CC -s 0.4 0.4")
       (mkOnce "${lxqt.lxqt-policykit.out}/bin/lxqt-policykit-agent")
       (mkOnce "${xorg.xrandr.out}/bin/xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --mode 1920x1080 --rate 75 --pos 0x0 --rotate normal --output HDMI-A-1-1 --off --output DisplayPort-1-3 --off --output DisplayPort-1-4 --off --output DisplayPort-1-5 --off")
-      (mkOnce "${dex.out}/bin/dex --autostart --environment i3")
       (mkOnce "${picom.out}/bin/picom -cbf --config ${./picom.conf}")
       (mkOnce "${openrgb.out}/bin/openrgb --startminimized --profile \"Trans-Purple\"")
       (mkOnce "${flameshot.out}/bin/flameshot")
@@ -91,9 +89,6 @@ in {
       "${mod}+Return" = "exec ${terminal}";
       "${mod}+space" = "exec ${menu}";
       "${mod}+0" = "exec ${browser}";
-
-      # pop-up kitty
-      "${mod}+x" = "nop caterwaul";
 
       # screenshot
       "Print" = "exec --no-startup-id ${screenshot-full}";

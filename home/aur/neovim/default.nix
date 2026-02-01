@@ -291,6 +291,7 @@ in {
     godot.enable = true;
     dap-ui.enable = true;
     typst-preview.enable = true;
+    flutter-tools.enable = true;
 
     barbar = {
       enable = true;
