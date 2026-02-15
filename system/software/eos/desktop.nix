@@ -3,9 +3,16 @@
 {
   imports = [ ./themes/sddm.nix ];
 
-  services.libinput.touchpad = {
-    disableWhileTyping = true;
-    naturalScrolling = true;
+  services.libinput = {
+    mouse = {
+      middleEmulation = false;
+    };
+
+    touchpad = {
+      middleEmulation = false;
+      disableWhileTyping = true;
+      naturalScrolling = true;
+    };
   };
 
   services.displayManager = {
