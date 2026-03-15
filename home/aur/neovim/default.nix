@@ -670,28 +670,68 @@ in {
           selection_order = "near_cursor";
         };
 
-        mapping = let
-          confirm = mkRaw ''cmp.mapping(function(fallback)
-            if cmp.visible() then
-              local entry = cmp.get_selected_entry()
-              if not entry then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-              end
-              cmp.confirm()
+        mapping = {
+          "<Left>" = mkRaw ''cmp.mapping(function(fallback)
+            cmp.abort()
+            fallback()
+          end, {'i'})'';
+          "<S-Left>" = mkRaw ''cmp.mapping(function(fallback)
+            local luasnip = require('luasnip')
+            cmp.abort()
+
+            if luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
             else
               fallback()
             end
           end, {'i'})'';
-          cancel = mkRaw ''cmp.mapping(function(fallback)
+          "<Right>" = mkRaw ''cmp.mapping(function(fallback)
             cmp.abort()
             fallback()
           end, {'i'})'';
-        in {
-          "<S-CR>" = confirm;
-          "<Left>" = cancel;
-          "<Right>" = cancel;
-          "<S-Tab>" = mkRaw ''cmp.mapping(cmp.mapping.select_prev_item(), {'i'})'';
-          "<Tab>" = mkRaw ''cmp.mapping(cmp.mapping.select_next_item(), {'i'})'';
+          "<S-Right>" = mkRaw ''cmp.mapping(function(fallback)
+            local luasnip = require('luasnip')
+            cmp.abort()
+
+            if luasnip.locally_jumpable(1) then
+              luasnip.jump(1)
+            else
+              fallback()
+            end
+          end, {'i'})'';
+          "<CR>" = mkRaw ''cmp.mapping(function(fallback)
+            local luasnip = require('luasnip')
+
+            if cmp.visible() then
+              if luasnip.expandable() then
+                luasnip.expand()
+              else
+                local entry = cmp.get_selected_entry()
+
+                if not entry then
+                  cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                end
+
+                cmp.confirm()
+              end
+            else
+              fallback()
+            end
+          end, {'i'})'';
+          "<Tab>" = mkRaw ''cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end, {'i'})'';
+          "<S-Tab>" = mkRaw ''cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, {'i'})'';
         };
       };
     };
