@@ -52,8 +52,8 @@ in rec {
     sswitcher
   ] ++ (with pkgs.aurakle; [
     i3lock-blurred
-    EternalModManager
-    bar
+    aonsoku
+    # EternalModManager
   ]) ++ (with pkgs; [
     (writeShellScriptBin "recon-gdrive" ''
       ${rclone.out}/bin/rclone config reconnect AuraGDrive:
@@ -119,7 +119,7 @@ in rec {
     # soulseekqt
     speedtest-cli
     handbrake
-    # scrcpy
+    scrcpy
     vlc
     puddletag
     imhex
@@ -133,6 +133,7 @@ in rec {
     openutau
     yabridge
     yabridgectl
+    beyond-all-reason
     ffmpeg
     # pandoc
     miktex
@@ -165,7 +166,7 @@ in rec {
     yt-dlp
     multiplex
     mpv
-    osu-lazer-bin
+    # osu-lazer-bin
     the-powder-toy
     celeste64
     bottom
@@ -188,7 +189,6 @@ in rec {
     with-shell
     wl-clipboard
     mpvpaper
-    papirus-icon-theme
     networkmanagerapplet
     mindustry-server
     pavucontrol
@@ -314,7 +314,7 @@ in rec {
 
     extraConfig = {
       commit.gpgsign = true;
-      init.defaultBranch = "main";
+      init.defaultBranch = "mistress";
     };
   };
 
@@ -591,6 +591,10 @@ in rec {
       generator = pkgs.formats.toml { };
       inherit config;
     };
+    yaml = config: {
+      generator = pkgs.formats.yaml { };
+      inherit config;
+    };
     ini = config: {
       generator = pkgs.formats.ini { };
       inherit config;
@@ -624,6 +628,16 @@ in rec {
       }
     '';
   } // ((a: lib.attrsets.concatMapAttrs (k: { generator, config, ... }: mkConf k (generator.generate (builtins.baseNameOf k) config)) a) {
+    "lazygit/config.yml" = yaml {
+      git = {
+        mainBranches = [
+          "mistress"
+          "master"
+          "main"
+        ];
+      };
+    };
+
     "neovide/config.toml" = toml {
       font = {
         normal = [

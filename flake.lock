@@ -32,11 +32,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769650072,
-        "narHash": "sha256-vYHQXrzGndBhaKVL1Ar7uEen4OzROsjbU5nP1U4kgzc=",
+        "lastModified": 1772847666,
+        "narHash": "sha256-kVPbIGvID2vrvWGYKSjQFrFoIX53SX+cD2eqEXD0qtY=",
         "owner": "aurakle",
         "repo": "nurpkgs",
-        "rev": "ae951c3399830add5a5d52a17ea76fba62fc3863",
+        "rev": "9d636ef9948c1ef04f4a96e07642785c43d9659f",
         "type": "github"
       },
       "original": {

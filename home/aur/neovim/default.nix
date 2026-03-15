@@ -3,7 +3,6 @@
 , pkgs }:
 
 #TODO: make the "empty buffer" switch to the dashboard immediately
-#TODO: why doesn't friendly snippets work?
 
 let
   mkRaw = config.lib.nixvim.mkRaw;
@@ -12,6 +11,7 @@ in {
   viAlias = true;
   vimAlias = true;
   enableMan = true;
+  defaultEditor = true;
 
   nixpkgs.useGlobalPackages = true;
 
@@ -265,7 +265,6 @@ in {
     lz-n.enable = true;
     compiler.enable = true;
     lsp-lines.enable = true;
-    lsp-signature.enable = true;
     specs.enable = true;
     web-devicons.enable = true;
     hmts.enable = true; #TODO: possibly causes issues?
@@ -292,6 +291,13 @@ in {
     dap-ui.enable = true;
     typst-preview.enable = true;
     flutter-tools.enable = true;
+    barbecue.enable = true;
+    actions-preview.enable = true;
+    ccc.enable = true;
+    dap-lldb.enable = true;
+    dap-virtual-text.enable = true;
+    fidget.enable = true;
+    guess-indent.enable = true;
 
     barbar = {
       enable = true;
@@ -303,30 +309,30 @@ in {
       };
     };
 
-    nvim-tree = {
-      enable = true;
-
-      openOnSetupFile = true;
-      hijackCursor = true;
-      selectPrompts = true;
-
-      updateFocusedFile = {
-        enable = true;
-        updateRoot = true;
-      };
-
-      view = {
-        width = 50;
-      };
-
-      renderer = {
-        addTrailing = true;
-        groupEmpty = true;
-        symlinkDestination = true;
-        indentWidth = 2;
-        highlightOpenedFiles = "all";
-      };
-    };
+    # nvim-tree = {
+    #   enable = true;
+    #
+    #   openOnSetupFile = true;
+    #   hijackCursor = true;
+    #   selectPrompts = true;
+    #
+    #   updateFocusedFile = {
+    #     enable = true;
+    #     updateRoot = true;
+    #   };
+    #
+    #   view = {
+    #     width = 50;
+    #   };
+    #
+    #   renderer = {
+    #     addTrailing = true;
+    #     groupEmpty = true;
+    #     symlinkDestination = true;
+    #     indentWidth = 2;
+    #     highlightOpenedFiles = "all";
+    #   };
+    # };
 
     dap = {
       enable = true;
@@ -640,51 +646,78 @@ in {
       };
     };
 
-    coq-nvim = {
+    cmp = {
       enable = true;
-      installArtifacts = true;
+      autoEnableSources = true;
 
       settings = {
-        xdg = true;
-        auto_start = "shut-up";
-        keymap.recommended = false;
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "nvim_lsp_signature_help"; }
+          { name = "path"; }
+          { name = "buffer"; }
+          { name = "luasnip"; }
+          { name = "yanky"; }
+          { name = "dap"; }
+        ];
+
+        snippet = {
+          expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+        };
+
+        view.entries = {
+          name = "custom";
+          selection_order = "near_cursor";
+        };
+
+        mapping = let
+          confirm = mkRaw ''cmp.mapping(function(fallback)
+            if cmp.visible() then
+              local entry = cmp.get_selected_entry()
+              if not entry then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              end
+              cmp.confirm()
+            else
+              fallback()
+            end
+          end, {'i'})'';
+          cancel = mkRaw ''cmp.mapping(function(fallback)
+            cmp.abort()
+            fallback()
+          end, {'i'})'';
+        in {
+          "<S-CR>" = confirm;
+          "<Left>" = cancel;
+          "<Right>" = cancel;
+          "<S-Tab>" = mkRaw ''cmp.mapping(cmp.mapping.select_prev_item(), {'i'})'';
+          "<Tab>" = mkRaw ''cmp.mapping(cmp.mapping.select_next_item(), {'i'})'';
+        };
       };
     };
 
-    navbuddy = {
-      enable = true;
-      lsp.autoAttach = true;
-
-      mappings = {
-        "<DOWN>" = "next_sibling";
-        "<UP>" = "previous_sibling";
-        "<LEFT>" = "parent";
-        "<RIGHT>" = "children";
-      };
-    };
-
-    muren = {
-      enable = true;
-      #TODO: probably needs configuring
-    };
+    # navbuddy = {
+    #   enable = true;
+    #   lsp.autoAttach = true;
+    #
+    #   mappings = {
+    #     "<DOWN>" = "next_sibling";
+    #     "<UP>" = "previous_sibling";
+    #     "<LEFT>" = "parent";
+    #     "<RIGHT>" = "children";
+    #   };
+    # };
+    #
+    # muren = {
+    #   enable = true;
+    #   #TODO: probably needs configuring
+    # };
 
     lightline = {
       enable = true;
 
       settings = {
         colorscheme = "catppuccin";
-      };
-    };
-
-    autoclose = {
-      enable = true;
-
-      settings = {
-        options = {
-          auto_indent = true;
-          pair_spaces = true;
-          disable_command_mode = true;
-        };
       };
     };
 
