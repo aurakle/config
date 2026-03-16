@@ -265,14 +265,12 @@ in {
     lz-n.enable = true;
     compiler.enable = true;
     lsp-lines.enable = true;
-    specs.enable = true;
     web-devicons.enable = true;
     hmts.enable = true; #TODO: possibly causes issues?
     lazygit.enable = true;
     nvim-surround.enable = true;
     git-conflict.enable = true;
     treesitter.enable = true;
-    treesitter-context.enable = true;
     hop.enable = true;
     direnv.enable = true;
     twilight.enable = true;
@@ -736,22 +734,32 @@ in {
       };
     };
 
-    # navbuddy = {
-    #   enable = true;
-    #   lsp.autoAttach = true;
-    #
-    #   mappings = {
-    #     "<DOWN>" = "next_sibling";
-    #     "<UP>" = "previous_sibling";
-    #     "<LEFT>" = "parent";
-    #     "<RIGHT>" = "children";
-    #   };
-    # };
-    #
-    # muren = {
-    #   enable = true;
-    #   #TODO: probably needs configuring
-    # };
+    luasnip = {
+      enable = true;
+
+      fromVscode = [
+        {
+          lazyLoad = false;
+        }
+      ];
+    };
+
+    navbuddy = {
+      enable = true;
+      lsp.autoAttach = true;
+
+      mappings = {
+        "<DOWN>" = "next_sibling";
+        "<UP>" = "previous_sibling";
+        "<LEFT>" = "parent";
+        "<RIGHT>" = "children";
+      };
+    };
+
+    muren = {
+      enable = true;
+      #TODO: probably needs configuring
+    };
 
     lightline = {
       enable = true;
@@ -795,14 +803,9 @@ in {
       };
     };
 
-    luasnip = {
+    specs = {
       enable = true;
-
-      fromVscode = [
-        {
-          lazyLoad = false;
-        }
-      ];
+      #TODO: configure
     };
 
     indent-blankline = {
