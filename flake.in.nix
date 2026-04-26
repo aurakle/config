@@ -18,7 +18,7 @@
     aurakle = dep "github:aurakle/nurpkgs";
     agenix = dep "github:ryantm/agenix";
     home-manager = dep "github:nix-community/home-manager/release-${version}";
-    catppuccin = dep "github:catppuccin/nix";
+    catppuccin = dep "github:catppuccin/nix/release-${version}";
   };
 
   outputs = inputs@{ flake-utils, ... }:

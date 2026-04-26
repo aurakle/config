@@ -164,7 +164,6 @@ in rec {
     fzf
     itch
     yt-dlp
-    multiplex
     mpv
     # osu-lazer-bin
     the-powder-toy

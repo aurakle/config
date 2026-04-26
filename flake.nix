@@ -14,7 +14,7 @@
     };
     catppuccin = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:catppuccin/nix";
+      url = "github:catppuccin/nix/release-25.11";
     };
     flake-utils.url = "github:numtide/flake-utils";
     flakegen.url = "github:jorsn/flakegen";

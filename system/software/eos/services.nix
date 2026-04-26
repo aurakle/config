@@ -81,16 +81,8 @@
     #   defaultRuntime = true; # Register as default OpenXR runtime
     # };
 
-    i2pd = {
+    i2p = {
       enable = true;
-      upnp.enable = true;
-      port = 7656;
-
-      proto = {
-        httpProxy = {
-          enable = true;
-        };
-      };
     };
 
     atd = {

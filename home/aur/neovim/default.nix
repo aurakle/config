@@ -266,11 +266,11 @@ in {
     compiler.enable = true;
     lsp-lines.enable = true;
     web-devicons.enable = true;
-    hmts.enable = true; #TODO: possibly causes issues?
     lazygit.enable = true;
     nvim-surround.enable = true;
     git-conflict.enable = true;
-    treesitter.enable = true;
+    # hmts.enable = true; #TODO: possibly causes issues?
+    # treesitter.enable = true;
     hop.enable = true;
     direnv.enable = true;
     twilight.enable = true;
@@ -674,28 +674,16 @@ in {
             fallback()
           end, {'i'})'';
           "<S-Left>" = mkRaw ''cmp.mapping(function(fallback)
-            local luasnip = require('luasnip')
             cmp.abort()
-
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
+            fallback()
           end, {'i'})'';
           "<Right>" = mkRaw ''cmp.mapping(function(fallback)
             cmp.abort()
             fallback()
           end, {'i'})'';
           "<S-Right>" = mkRaw ''cmp.mapping(function(fallback)
-            local luasnip = require('luasnip')
             cmp.abort()
-
-            if luasnip.locally_jumpable(1) then
-              luasnip.jump(1)
-            else
-              fallback()
-            end
+            fallback()
           end, {'i'})'';
           "<CR>" = mkRaw ''cmp.mapping(function(fallback)
             local luasnip = require('luasnip')
