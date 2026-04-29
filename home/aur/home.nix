@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   editor = "nvim";
@@ -41,14 +41,7 @@ in rec {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = let
-    # vst plugins for music stuff
-    vst = with pkgs; [
-      lsp-plugins
-      surge-XT
-      vital
-    ];
-  in [
+  home.packages = [
     sswitcher
   ] ++ (with pkgs.aurakle; [
     i3lock-blurred
@@ -206,7 +199,7 @@ in rec {
     pistol
     ouch
     obsidian
-  ]) ++ programs.rofi.plugins ++ vst;
+  ]) ++ programs.rofi.plugins;
 
   xsession = {
     enable = true;
@@ -697,14 +690,7 @@ in rec {
   #
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = let
-    makeAudioPluginPath = format:
-      (lib.makeSearchPath format [
-        "$HOME/.nix-profile/lib"
-        "/run/current-system/sw/lib"
-        "/etc/profiles/per-user/$USER/lib"
-      ]) + ":$HOME/.${format}";
-  in {
+  home.sessionVariables = {
     GAMES = "$HOME/Games";
     APPS = "$HOME/Apps";
 
@@ -720,13 +706,6 @@ in rec {
 
     _ZO_RESOLVE_SYMLINKS = 1;
     _ZO_ECHO = 1;
-
-    DSSI_PATH = makeAudioPluginPath "dssi";
-    LADSPA_PATH = makeAudioPluginPath "ladspa";
-    LV2_PATH = makeAudioPluginPath "lv2";
-    LXVST_PATH = makeAudioPluginPath "lxvst";
-    VST_PATH = makeAudioPluginPath "vst";
-    VST3_PATH = makeAudioPluginPath "vst3";
   };
 
   # This value determines the Home Manager release that your configuration is
