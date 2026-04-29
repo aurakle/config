@@ -319,23 +319,6 @@
         "type": "github"
       }
     },
-    "i2pd_override": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1769885395,
-        "narHash": "sha256-IvbKy5eUas/cw6psXutKJlN03hpFnq1XP0b31nfNFTg=",
-        "owner": "one-d-wide",
-        "repo": "nixpkgs",
-        "rev": "abf9474fcd1ce0ff008e529d7e0bcd7c3436712b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "one-d-wide",
-        "ref": "i2pd-refactor-freeform",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -555,7 +538,6 @@
         "flake-utils": "flake-utils_3",
         "flakegen": "flakegen",
         "home-manager": "home-manager_2",
-        "i2pd_override": "i2pd_override",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-xr": "nixpkgs-xr",

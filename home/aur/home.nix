@@ -127,7 +127,9 @@ in rec {
     gitnr
     aseprite
     krita
-    lmms
+    ardour
+    bristol
+    x42-avldrums
     musescore
     carla
     openutau
