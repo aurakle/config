@@ -51,10 +51,6 @@
       enable = true;
     };
 
-    adb = {
-      enable = true;
-    };
-
     gnupg.agent = {
       enable = true;
       enableSSHSupport = false;
@@ -91,6 +87,7 @@
     wget
     usbutils
     gnupg
+    android-tools
     networkmanager
     networkmanager-openvpn
     gparted
