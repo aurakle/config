@@ -110,26 +110,26 @@ in rec {
         hash = "sha256-JhWHub1YmdSJXZcyOK97/5TnBsKVN0dg7nwqg0EP7H8=";
       };
     }))
-    (blockbench.overrideAttrs (old: rec {
-      version = "4.12.6";
-
-      src = fetchFromGitHub {
-        owner = "JannisX11";
-        repo = "blockbench";
-        tag = "v${version}";
-        hash = "sha256-iV8qpUsUnL1n6hKADegNTmrW/AUWNiiNLxrTU4WPR30=";
-      };
-
-      npmDepsHash = "sha256-ZLFmcK91SrUM+ouBENzc+MdNvQCRDh0ej4tf2TneUtQ=";
-
-      npmDeps = fetchNpmDeps {
-        inherit src;
-        name = "${old.pname}-${version}-npm-deps";
-        hash = npmDepsHash;
-      };
-
-      npmBuildScript = "bundle";
-    }))
+#    (blockbench.overrideAttrs (old: rec {
+#      version = "4.12.6";
+#
+#      src = fetchFromGitHub {
+#        owner = "JannisX11";
+#        repo = "blockbench";
+#        tag = "v${version}";
+#        hash = "sha256-iV8qpUsUnL1n6hKADegNTmrW/AUWNiiNLxrTU4WPR30=";
+#      };
+#
+#      npmDepsHash = "sha256-ZLFmcK91SrUM+ouBENzc+MdNvQCRDh0ej4tf2TneUtQ=";
+#
+#      npmDeps = fetchNpmDeps {
+#        inherit src;
+#        name = "${old.pname}-${version}-npm-deps";
+#        hash = npmDepsHash;
+#      };
+#
+#      npmBuildScript = "bundle";
+#    }))
     edmarketconnector
     fjordlauncher
     # unstable.neovide
