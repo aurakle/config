@@ -1,6 +1,6 @@
 {
   inputs = let
-    version = "25.11";
+    version = "26.05";
     dep = url: {
       inherit url;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +13,7 @@
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
 
     nixvim.url = "github:nix-community/nixvim/nixos-${version}";
+    fjord.url = "github:unmojang/FjordLauncher";
 
     nur = dep "github:nix-community/nur";
     aurakle = dep "github:aurakle/nurpkgs";

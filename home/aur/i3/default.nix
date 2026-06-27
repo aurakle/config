@@ -121,8 +121,10 @@ in {
       # bluetooth
       "${mod}+b" = "exec --no-startup-id ${bluetooth}";
 
-      # Evelyn's clicker <3
+      # Evy's clicker <3
       "${mod}+c" = "exec --no-startup-id ${clickr-click.out}/bin/clickr-click evy.clickr";
+      # Evelyn's clicker
+      "${mod}+x" = "exec --no-startup-id ${clickr-click.out}/bin/clickr-click ouppy.clickr";
 
       # keyboard layout
       "${mod}+g" = "exec --no-startup-id ${pkgs.xorg.setxkbmap.out}/bin/setxkbmap us";

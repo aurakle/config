@@ -1,6 +1,7 @@
 inputs@{ nixpkgs
 , nixpkgs-unstable
 , nur
+, fjord
 , aurakle
 , home-manager
 , nixvim
@@ -15,6 +16,7 @@ system: let
 
     overlays = [
       nur.overlays.default
+      fjord.overlays.default
       (final: prev: {
         wine = prev.wineWowPackages.stable;
 

@@ -88,6 +88,9 @@ in rec {
     (writeShellScriptBin "rec-sed" ''
       find ./ -type f -exec sed -i -e "$1" {} \;
     '')
+    (writeShellScriptBin "edit" ''
+      kitty nvim "$1"
+    '')
     (writeShellScriptBin "md2pdf" ''
       pandoc --pdf-engine=xelatex --from=markdown+hard_line_breaks --to pdf "$1.md" -o "$1.pdf"
     '')
@@ -99,6 +102,36 @@ in rec {
         wrapProgram $out/bin/vesktop --add-flags \"--disable-features=WebRtcAllowInputVolumeAdjustment\"
       '';
     }))
+    (edhm-ui.overrideAttrs (old: rec {
+      version = "3.0.67";
+
+      src = fetchzip {
+        url = "https://github.com/BlueMystical/EDHM_UI/releases/download/v${version}/edhm-ui-v3-linux-x64.zip";
+        hash = "sha256-JhWHub1YmdSJXZcyOK97/5TnBsKVN0dg7nwqg0EP7H8=";
+      };
+    }))
+    (blockbench.overrideAttrs (old: rec {
+      version = "4.12.6";
+
+      src = fetchFromGitHub {
+        owner = "JannisX11";
+        repo = "blockbench";
+        tag = "v${version}";
+        hash = "sha256-iV8qpUsUnL1n6hKADegNTmrW/AUWNiiNLxrTU4WPR30=";
+      };
+
+      npmDepsHash = "sha256-ZLFmcK91SrUM+ouBENzc+MdNvQCRDh0ej4tf2TneUtQ=";
+
+      npmDeps = fetchNpmDeps {
+        inherit src;
+        name = "${old.pname}-${version}-npm-deps";
+        hash = npmDepsHash;
+      };
+
+      npmBuildScript = "bundle";
+    }))
+    edmarketconnector
+    fjordlauncher
     # unstable.neovide
     unstable.olympus
     signal-desktop
@@ -137,6 +170,7 @@ in rec {
     # zathura
     r2modman
     cemu
+    # helvum
     kdePackages.kdenlive
     simplescreenrecorder
     cava
@@ -147,7 +181,6 @@ in rec {
     lazygit
     hunspell
     tree
-    blockbench
     thunderbird
     birdtray # for thunderbird to support system tray
     git
@@ -176,7 +209,6 @@ in rec {
     dunst
     blueman
     linux-wifi-hotspot
-    prismlauncher
     lxqt.lxqt-policykit
     autorandr
     obs-studio
@@ -513,9 +545,9 @@ in rec {
     enable = true;
 
     theme = {
-      name = "Catppuccin-GTK-Purple-Dark";
+      name = "Catppuccin-GTK-Mauve-Dark";
       package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = [ "purple" ];
+        accent = [ "mauve" ];
       };
     };
 
